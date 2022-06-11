@@ -30,11 +30,12 @@ class _SignUpPageState extends State<SignUpPage> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [
-              hexStringColor("5ECC54"),
-              hexStringColor("954c64"),
-              hexStringColor("5ECCFF")
-            ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+              gradient: LinearGradient(colors: [
+                hexStringColor("5ECC54"),
+                hexStringColor("954c64"),
+                hexStringColor("5ECCFF")
+              ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+            ),
             child: SingleChildScrollView(
                 child: Padding(
               padding: EdgeInsets.fromLTRB(20, 90, 20, 0),
