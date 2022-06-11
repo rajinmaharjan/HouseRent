@@ -29,7 +29,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.12.1
+  # http: ^0.12.1
+  firebase_core: ^1.17.1
+  firebase_auth: ^3.3.19
   # flutter_appauth: ^0.9.1
   # flutter_secure_storage: ^3.3.3
 

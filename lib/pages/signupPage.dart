@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:house_rent_app/pages/homePage.dart';
+import 'package:house_rent_app/pages/loginPage.dart';
 import 'package:house_rent_app/reuseable_widgets/reuseable_widgets.dart';
 import 'package:house_rent_app/utils/colors_utils.dart';
 
@@ -68,8 +71,17 @@ class _SignUpPageState extends State<SignUpPage> {
                     height: 20,
                   ),
                   loginSignUpButton(context, false, () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomePage()));
+                    FirebaseAuth.instance
+                        .createUserWithEmailAndPassword(
+                            email: _emailTextController.text,
+                            password: _passwordTextController.text)
+                        .then((value) {
+                      print("Created new account");
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginPage()));
+                    }).onError((error, stackTrace) {
+                      print("Error ${error.toString()}");
+                    });
                   }),
                 ],
               ),
