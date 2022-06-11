@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:house_rent_app/pages/loginPage.dart';
 
 void main() => runApp(const HomePage());
 
@@ -53,6 +55,24 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('House Rent'),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0.0, 0.0, 16.0, 0.0),
+            child: IconButton(
+              icon: Icon(
+                Icons.logout,
+                size: 32.0,
+              ),
+              onPressed: () {
+                FirebaseAuth.instance.signOut().then((value) {
+                  print("signed out successfully.");
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LoginPage()));
+                });
+              },
+            ),
+          ),
+        ],
       ),
       body: Center(
         child: _widgetOptions.elementAt(_selectedIndex),

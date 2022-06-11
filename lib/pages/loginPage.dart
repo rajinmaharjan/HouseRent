@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:house_rent_app/pages/homePage.dart';
 import 'package:house_rent_app/pages/signupPage.dart';
@@ -47,11 +48,19 @@ class _LoginPageState extends State<LoginPage> {
                   height: 20,
                 ),
                 loginSignUpButton(context, true, () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => HomePage(),
-                      ));
+                  FirebaseAuth.instance
+                      .signInWithEmailAndPassword(
+                          email: _emailTextController.text,
+                          password: _passwordTextController.text)
+                      .then((value) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(),
+                        )).onError((error, stackTrace) {
+                      print("Error ${error.toString()}");
+                    });
+                  });
                 }),
                 signUpOption(),
               ],
