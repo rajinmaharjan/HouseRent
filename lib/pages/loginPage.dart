@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:house_rent_app/pages/homePage.dart';
 import 'package:house_rent_app/pages/signupPage.dart';
 import 'package:house_rent_app/reuseable_widgets/reuseable_widgets.dart';
 import 'package:house_rent_app/utils/colors_utils.dart';
@@ -45,7 +46,13 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   height: 20,
                 ),
-                loginSignUpButton(context, true, () {}),
+                loginSignUpButton(context, true, () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => HomePage(),
+                      ));
+                }),
                 signUpOption(),
               ],
             ),
