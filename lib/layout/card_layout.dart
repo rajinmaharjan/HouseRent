@@ -16,7 +16,7 @@ class HouseLayout extends StatelessWidget {
       required this.location});
 
   void selectedHouse(BuildContext ctx) {
-    Navigator.of(ctx).pushNamed('./house-view-description', arguments: {
+    Navigator.of(ctx).pushNamed('./house-description', arguments: {
       'id': id,
       'imagelink': imagelink,
       'price': price,
@@ -33,7 +33,7 @@ class HouseLayout extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            height: 100,
+            height: 250,
             child: ClipRRect(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(10), topRight: Radius.circular(10)),
@@ -45,10 +45,11 @@ class HouseLayout extends StatelessWidget {
           ),
           Container(
             decoration: BoxDecoration(
-                border: Border.all(width: 0.5, color: Colors.grey),
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(10),
-                    bottomRight: Radius.circular(10))),
+              border: Border.all(width: 0.5, color: Colors.grey),
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10)),
+            ),
             child: Container(
               margin: EdgeInsets.symmetric(vertical: 5),
               width: double.infinity,

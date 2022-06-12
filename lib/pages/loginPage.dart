@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:house_rent_app/pages/bottomNavBar.dart';
 import 'package:house_rent_app/pages/homePage.dart';
 import 'package:house_rent_app/pages/signupPage.dart';
 import 'package:house_rent_app/reuseable_widgets/reuseable_widgets.dart';
@@ -22,11 +23,12 @@ class _LoginPageState extends State<LoginPage> {
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-          hexStringColor("5ECC54"),
-          hexStringColor("954c64"),
-          hexStringColor("5ECCFF")
-        ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
+          gradient: LinearGradient(colors: [
+            hexStringColor("5ECC54"),
+            hexStringColor("954c64"),
+            hexStringColor("5ECCFF")
+          ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+        ),
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.fromLTRB(
@@ -56,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => HomePage(),
+                          builder: (context) => BottomNavBar(),
                         )).onError((error, stackTrace) {
                       print("Error ${error.toString()}");
                     });
