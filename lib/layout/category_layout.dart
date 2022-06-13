@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CategoryLayout extends StatelessWidget {
@@ -28,7 +27,7 @@ class CategoryLayout extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            height: 250,
+            height: 100,
             child: ClipRRect(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(10), topRight: Radius.circular(10)),

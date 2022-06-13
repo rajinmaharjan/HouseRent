@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "House Rent App",
       home: const LoginPage(),
-      routes: {'./house-description': (ctx) => HouseDescription()},
     );
   }
 }

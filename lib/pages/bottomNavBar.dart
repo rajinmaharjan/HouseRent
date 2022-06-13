@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:house_rent_app/layout/card_layout.dart';
-import 'package:house_rent_app/models/data_list.dart';
 import 'package:house_rent_app/pages/homePage.dart';
 import 'package:house_rent_app/pages/loginPage.dart';
 
@@ -34,10 +32,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     Text(
-      'Index 1: Business',
+      'Categories',
     ),
     Text(
-      'Index 2: School',
+      'Search',
     ),
   ];
 
@@ -85,8 +83,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
             label: 'Categories',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.map_sharp),
-            label: 'School',
+            icon: Icon(Icons.search),
+            label: 'Search',
           ),
         ],
         currentIndex: _selectedIndex,

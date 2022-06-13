@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HouseLayout extends StatelessWidget {
@@ -36,7 +35,7 @@ class HouseLayout extends StatelessWidget {
             height: 250,
             child: ClipRRect(
               borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+                  topLeft: Radius.circular(20), topRight: Radius.circular(20)),
               child: Image.network(
                 imagelink,
                 fit: BoxFit.cover,
@@ -45,7 +44,7 @@ class HouseLayout extends StatelessWidget {
           ),
           Container(
             decoration: BoxDecoration(
-              border: Border.all(width: 0.5, color: Colors.grey),
+              border: Border.all(width: 0.5, color: Colors.greenAccent),
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(10),
                   bottomRight: Radius.circular(10)),
@@ -54,32 +53,22 @@ class HouseLayout extends StatelessWidget {
               margin: EdgeInsets.symmetric(vertical: 5),
               width: double.infinity,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    child: Text(
-                      title,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                  Text(
+                    title,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
                     ),
-                    margin: EdgeInsets.all(5),
                   ),
-                  Container(
-                      child: Row(children: [
-                        Icon(
-                          Icons.currency_rupee,
-                          color: Colors.amber,
-                          size: 12,
-                        ),
-                        Text(
-                          price.toString(),
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal,
-                              fontSize: 12,
-                              color: Colors.blue),
-                        )
-                      ]),
-                      margin: EdgeInsets.all(5)),
+                  Text(
+                    "Rs. " + price.toString(),
+                    style: TextStyle(
+                        fontWeight: FontWeight.normal,
+                        fontSize: 12,
+                        color: Colors.blueAccent),
+                  ),
                 ],
               ),
             ),
