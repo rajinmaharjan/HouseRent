@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:house_rent_app/pages/categoryPage.dart';
 import 'package:house_rent_app/pages/homePage.dart';
 import 'package:house_rent_app/pages/loginPage.dart';
 
@@ -31,9 +32,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    Text(
-      'Categories',
-    ),
+    CategoryPage(),
     Text(
       'Search',
     ),

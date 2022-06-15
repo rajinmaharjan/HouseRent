@@ -2,19 +2,16 @@ import 'package:flutter/material.dart';
 
 class CategoryLayout extends StatelessWidget {
   String Cid;
-  String imagelink;
   String title;
 
   CategoryLayout({
     required this.Cid,
     required this.title,
-    required this.imagelink,
   });
 
   void selectedCategory(BuildContext ctx) {
-    Navigator.of(ctx).pushNamed('./${title}-description', arguments: {
+    Navigator.of(ctx).pushNamed('./category-description', arguments: {
       'id': Cid,
-      'imagelink': imagelink,
       'title': title,
     });
   }
@@ -31,10 +28,6 @@ class CategoryLayout extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-              child: Image.network(
-                imagelink,
-                fit: BoxFit.cover,
-              ),
             ),
           ),
           Container(
@@ -48,7 +41,7 @@ class CategoryLayout extends StatelessWidget {
               margin: EdgeInsets.symmetric(vertical: 5),
               width: double.infinity,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
                     child: Text(
@@ -58,15 +51,6 @@ class CategoryLayout extends StatelessWidget {
                     ),
                     margin: EdgeInsets.all(5),
                   ),
-                  Container(
-                      child: Row(children: [
-                        Icon(
-                          Icons.currency_rupee,
-                          color: Colors.amber,
-                          size: 12,
-                        ),
-                      ]),
-                      margin: EdgeInsets.all(5)),
                 ],
               ),
             ),

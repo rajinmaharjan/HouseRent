@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:house_rent_app/pages/bottomNavBar.dart';
-import 'package:house_rent_app/pages/homePage.dart';
 import 'package:house_rent_app/pages/signupPage.dart';
 import 'package:house_rent_app/reuseable_widgets/reuseable_widgets.dart';
 import 'package:house_rent_app/utils/colors_utils.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -14,58 +14,126 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  TextEditingController _emailTextController = TextEditingController();
-  TextEditingController _passwordTextController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
+  final _emailTextController = new TextEditingController();
+  final _passwordTextController = new TextEditingController();
+
+  final _auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
+    
+    final emailField = TextFormField(
+      autofocus: false,
+      controller: _emailTextController,
+      keyboardType: TextInputType.emailAddress,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return ("Please Enter you Email");
+        }
+
+        if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9._]+.[a-z]").hasMatch(value)) {
+          return ("Please Enter a valid email");
+        }
+
+        return null;
+      },
+      onSaved: (value) {
+        _emailTextController.text = value!;
+      },
+      cursorColor: Colors.black,
+      style: TextStyle(color: Colors.black.withOpacity(0.9)),
+      textInputAction: TextInputAction.next,
+      decoration: InputDecoration(
+        prefixIcon: Icon(
+          Icons.person_outline,
+          color: Colors.black,
+        ),
+        labelText: "Email",
+        labelStyle: TextStyle(color: Colors.black.withOpacity(0.9)),
+        filled: true,
+        floatingLabelBehavior: FloatingLabelBehavior.never,
+        fillColor: Colors.black.withOpacity(0.3),
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30.0),
+            borderSide: const BorderSide(width: 0, style: BorderStyle.none)),
+      ),
+    );
+
+    final passwordField = TextFormField(
+      autofocus: false,
+      controller: _passwordTextController,
+      obscureText: true,
+      validator: (value) {
+        RegExp regex = new RegExp(r'^.{6,}$');
+        if (value!.isEmpty) {
+          return ("Password is required for login");
+        }
+
+        if (!regex.hasMatch(value)) {
+          return ("Please Enter valid Password(Min 6 character)");
+        }
+      },
+      onSaved: (value) {
+        _emailTextController.text = value!;
+      },
+      cursorColor: Colors.black,
+      style: TextStyle(color: Colors.black.withOpacity(0.9)),
+      textInputAction: TextInputAction.next,
+      decoration: InputDecoration(
+        prefixIcon: Icon(
+          Icons.key,
+          color: Colors.black,
+        ),
+        labelText: "Password",
+        labelStyle: TextStyle(color: Colors.black.withOpacity(0.9)),
+        filled: true,
+        floatingLabelBehavior: FloatingLabelBehavior.never,
+        fillColor: Colors.black.withOpacity(0.3),
+        border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30.0),
+            borderSide: const BorderSide(width: 0, style: BorderStyle.none)),
+      ),
+    );
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           gradient: LinearGradient(colors: [
-            hexStringColor("5ECC54"),
-            hexStringColor("954c64"),
-            hexStringColor("5ECCFF")
+            hexStringColor("0000FE"),
+            hexStringColor("23A0FF"),
+            hexStringColor("FFFFFF"),
           ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
         ),
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.fromLTRB(
                 20, MediaQuery.of(context).size.height * .2, 20, 0),
-            child: Column(
-              children: <Widget>[
-                logoWidget("assets/images/houseLogo.png"),
-                SizedBox(
-                  height: 30,
-                ),
-                reuseableTextField("Enter email or username",
-                    Icons.person_outline, false, _emailTextController),
-                SizedBox(
-                  height: 20,
-                ),
-                reuseableTextField("Enter Password", Icons.lock_outline, true,
-                    _passwordTextController),
-                SizedBox(
-                  height: 20,
-                ),
-                loginSignUpButton(context, true, () {
-                  FirebaseAuth.instance
-                      .signInWithEmailAndPassword(
-                          email: _emailTextController.text,
-                          password: _passwordTextController.text)
-                      .then((value) {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BottomNavBar(),
-                        )).onError((error, stackTrace) {
-                      print("Error ${error.toString()}");
-                    });
-                  });
-                }),
-                signUpOption(),
-              ],
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: <Widget>[
+                  logoWidget("assets/images/houseLogo.png"),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  emailField,
+                  SizedBox(
+                    height: 20,
+                  ),
+                  passwordField,
+                  SizedBox(
+                    height: 20,
+                  ),
+                  loginSignUpButton(context, true, () {
+                    singIn(_emailTextController.text,
+                        _passwordTextController.text);
+                  }),
+                  signUpOption(),
+                ],
+              ),
             ),
           ),
         ),
@@ -79,7 +147,7 @@ class _LoginPageState extends State<LoginPage> {
       children: [
         const Text(
           "Don't have an account ?",
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.black),
         ),
         GestureDetector(
           onTap: () {
@@ -88,10 +156,25 @@ class _LoginPageState extends State<LoginPage> {
           },
           child: const Text(
             " Sign Up",
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
         )
       ],
     );
+  }
+
+  void singIn(String email, String password) async {
+    if (_formKey.currentState!.validate()) {
+      await _auth
+          .signInWithEmailAndPassword(email: email, password: password)
+          .then((uid) => {
+                Fluttertoast.showToast(msg: "Login Succesfull"),
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) => BottomNavBar())),
+              })
+          .catchError((e) {
+        Fluttertoast.showToast(msg: e!.message);
+      });
+    }
   }
 }

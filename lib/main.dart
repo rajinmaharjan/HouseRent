@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:house_rent_app/layout/house_description.dart';
 import 'package:house_rent_app/pages/loginPage.dart';
 
 void main() async {
