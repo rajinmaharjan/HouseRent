@@ -288,7 +288,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
 
     return Scaffold(
-      backgroundColor: Colors.blueAccent,
+      backgroundColor: Color.fromARGB(255, 190, 206, 47),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -307,10 +307,10 @@ class _SignUpPageState extends State<SignUpPage> {
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           gradient: LinearGradient(colors: [
-            hexStringColor("0000FE"),
-            hexStringColor("23A0FF"),
-            hexStringColor("FFFFFF"),
-          ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+            hexStringColor("00FF00"),
+            hexStringColor("F0FF0F"),
+            hexStringColor("FF0000"),
+          ], begin: Alignment.topLeft, end: Alignment.bottomRight),
         ),
         child: SingleChildScrollView(
           child: Padding(

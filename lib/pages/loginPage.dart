@@ -23,7 +23,6 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    
     final emailField = TextFormField(
       autofocus: false,
       controller: _emailTextController,
@@ -34,7 +33,7 @@ class _LoginPageState extends State<LoginPage> {
         }
 
         if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9._]+.[a-z]").hasMatch(value)) {
-          return ("Please Enter a valid email");
+          return ("Invalid email");
         }
 
         return null;
@@ -72,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
         }
 
         if (!regex.hasMatch(value)) {
-          return ("Please Enter valid Password(Min 6 character)");
+          return ("Invalid Password");
         }
       },
       onSaved: (value) {
@@ -102,10 +101,10 @@ class _LoginPageState extends State<LoginPage> {
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           gradient: LinearGradient(colors: [
-            hexStringColor("0000FE"),
-            hexStringColor("23A0FF"),
-            hexStringColor("FFFFFF"),
-          ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+            hexStringColor("00FF00"),
+            hexStringColor("F0FF0F"),
+            hexStringColor("FF0000"),
+          ], begin: Alignment.topLeft, end: Alignment.bottomRight),
         ),
         child: SingleChildScrollView(
           child: Padding(

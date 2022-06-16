@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:house_rent_app/pages/categoryPage.dart';
 import 'package:house_rent_app/pages/homePage.dart';
 import 'package:house_rent_app/pages/loginPage.dart';
+import 'package:house_rent_app/pages/profilePage.dart';
 
 void main() => runApp(const HomePage());
 
@@ -36,6 +37,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     Text(
       'Search',
     ),
+    ProfilePage(),
   ];
 
   void _onItemTapped(int index) {
@@ -76,15 +78,23 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
+            backgroundColor: Colors.blue,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.category),
             label: 'Categories',
+            backgroundColor: Color.fromARGB(255, 148, 134, 7),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
             label: 'Search',
+            backgroundColor: Color.fromARGB(255, 108, 38, 62),
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+            backgroundColor: Color.fromARGB(255, 154, 47, 39),
+          )
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],

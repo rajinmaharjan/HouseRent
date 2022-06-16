@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:house_rent_app/utils/colors_utils.dart';
 
 class CategoryLayout extends StatelessWidget {
   String Cid;
@@ -23,22 +24,22 @@ class CategoryLayout extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            width: double.infinity,
-            height: 100,
-            child: ClipRRect(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-            ),
-          ),
-          Container(
             decoration: BoxDecoration(
-              border: Border.all(width: 0.5, color: Colors.grey),
+              gradient: LinearGradient(colors: [
+                hexStringColor("F0FF0F"),
+                hexStringColor("FFFFFF"),
+                hexStringColor("FF0000"),
+              ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+              border: Border.all(width: 1, color: Colors.black),
               borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10)),
+                bottomLeft: Radius.circular(15),
+                bottomRight: Radius.circular(15),
+                topLeft: Radius.circular(15),
+                topRight: Radius.circular(15),
+              ),
             ),
             child: Container(
-              margin: EdgeInsets.symmetric(vertical: 5),
+              margin: EdgeInsets.symmetric(vertical: 20),
               width: double.infinity,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,7 +48,7 @@ class CategoryLayout extends StatelessWidget {
                     child: Text(
                       title,
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                     ),
                     margin: EdgeInsets.all(5),
                   ),
