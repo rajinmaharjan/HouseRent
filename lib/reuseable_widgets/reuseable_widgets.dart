@@ -9,6 +9,15 @@ Image logoWidget(String imageName) {
   );
 }
 
+Image profile(String imageName) {
+  return Image.asset(
+    imageName,
+    fit: BoxFit.fitWidth,
+    width: 150,
+    height: 150,
+  );
+}
+
 Container loginSignUpButton(
     BuildContext context, bool isLogin, Function onTap) {
   return Container(

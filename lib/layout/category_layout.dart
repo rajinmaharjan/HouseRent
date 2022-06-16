@@ -26,9 +26,9 @@ class CategoryLayout extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
-                hexStringColor("F0FF0F"),
-                hexStringColor("FFFFFF"),
-                hexStringColor("FF0000"),
+                hexStringColor("b3f4ff"),
+                hexStringColor("b3eeff"),
+                hexStringColor("b3ddff"),
               ], begin: Alignment.topLeft, end: Alignment.bottomRight),
               border: Border.all(width: 1, color: Colors.black),
               borderRadius: BorderRadius.only(

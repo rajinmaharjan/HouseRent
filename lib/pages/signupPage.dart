@@ -288,7 +288,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
 
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 190, 206, 47),
+      backgroundColor: hexStringColor("994c26"),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -307,9 +307,9 @@ class _SignUpPageState extends State<SignUpPage> {
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           gradient: LinearGradient(colors: [
-            hexStringColor("00FF00"),
-            hexStringColor("F0FF0F"),
-            hexStringColor("FF0000"),
+            hexStringColor("f2793c"),
+            hexStringColor("ff963c"),
+            hexStringColor("FFFFFF"),
           ], begin: Alignment.topLeft, end: Alignment.bottomRight),
         ),
         child: SingleChildScrollView(
@@ -377,6 +377,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
     UserModel userModel = UserModel();
     userModel.email = user!.email;
+    userModel.uid = user.uid;
     userModel.firstName = _firstNameTextController.text;
     userModel.lastName = _lastNameTextController.text;
     userModel.userName = _userNameTextController.text;

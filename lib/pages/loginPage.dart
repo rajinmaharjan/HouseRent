@@ -101,9 +101,9 @@ class _LoginPageState extends State<LoginPage> {
         height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           gradient: LinearGradient(colors: [
-            hexStringColor("00FF00"),
-            hexStringColor("F0FF0F"),
-            hexStringColor("FF0000"),
+            hexStringColor("f2793c"),
+            hexStringColor("ff963c"),
+            hexStringColor("FFFFFF"),
           ], begin: Alignment.topLeft, end: Alignment.bottomRight),
         ),
         child: SingleChildScrollView(

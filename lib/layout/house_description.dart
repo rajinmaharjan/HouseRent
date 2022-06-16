@@ -9,6 +9,7 @@ class HouseDescription extends StatelessWidget {
     String houseId = routsArgs['id'].toString();
     String title = routsArgs['title'].toString();
     String location = routsArgs['location'].toString();
+    String price = routsArgs['price'].toString();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
@@ -72,6 +73,24 @@ class HouseDescription extends StatelessWidget {
                           text: 'Location: ',
                           style: const TextStyle(fontWeight: FontWeight.bold)),
                       TextSpan(text: location),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(20, 0, 20, 20),
+                alignment: Alignment.centerLeft,
+                child: RichText(
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                      color: Colors.black,
+                    ),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: 'Price: ',
+                          style: const TextStyle(fontWeight: FontWeight.bold)),
+                      TextSpan(text: price),
                     ],
                   ),
                 ),

@@ -50,6 +50,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 85, 24, 19),
         title: const Text('House Rent'),
         actions: [
           Padding(
@@ -78,12 +79,12 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-            backgroundColor: Colors.blue,
+            backgroundColor: Color.fromARGB(255, 108, 38, 62),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.category),
             label: 'Categories',
-            backgroundColor: Color.fromARGB(255, 148, 134, 7),
+            backgroundColor: Color.fromARGB(255, 108, 38, 62),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
@@ -93,7 +94,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Profile',
-            backgroundColor: Color.fromARGB(255, 154, 47, 39),
+            backgroundColor: Color.fromARGB(255, 108, 38, 62),
           )
         ],
         currentIndex: _selectedIndex,
